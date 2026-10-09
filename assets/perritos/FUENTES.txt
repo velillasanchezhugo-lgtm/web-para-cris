@@ -1,0 +1,28 @@
+Fotos de perritos descargadas de la API pública dog.ceo (imágenes del Stanford Dogs Dataset).
+
+perrito-01.jpg  <-  https://images.dog.ceo/breeds/pug/n02110958_4036.jpg
+perrito-02.jpg  <-  https://images.dog.ceo/breeds/pug/n02110958_15217.jpg
+perrito-03.jpg  <-  https://images.dog.ceo/breeds/shiba/shiba-5.jpg
+perrito-04.jpg  <-  https://images.dog.ceo/breeds/shiba/shiba-17.jpg
+perrito-05.jpg  <-  https://images.dog.ceo/breeds/corgi-cardigan/n02113186_10431.jpg
+perrito-06.jpg  <-  https://images.dog.ceo/breeds/corgi-cardigan/n02113186_9116.jpg
+perrito-07.jpg  <-  https://images.dog.ceo/breeds/pembroke/n02113023_3687.jpg
+perrito-08.jpg  <-  https://images.dog.ceo/breeds/pembroke/n02113023_2416.jpg
+perrito-09.jpg  <-  https://images.dog.ceo/breeds/pembroke/n02113023_4285.jpg
+perrito-10.jpg  <-  https://images.dog.ceo/breeds/samoyed/n02111889_11502.jpg
+perrito-11.jpg  <-  https://images.dog.ceo/breeds/retriever-golden/joey_img_20210906_091617_3.jpg
+perrito-12.jpg  <-  https://images.dog.ceo/breeds/retriever-golden/n02099601_4678.jpg
+perrito-13.jpg  <-  https://images.dog.ceo/breeds/labrador/n02099712_4323.jpg
+perrito-14.jpg  <-  https://images.dog.ceo/breeds/beagle/n02088364_8871.jpg
+perrito-15.jpg  <-  https://images.dog.ceo/breeds/pomeranian/n02112018_1561.jpg
+perrito-16.jpg  <-  https://images.dog.ceo/breeds/pomeranian/n02112018_7127.jpg
+perrito-17.jpg  <-  https://images.dog.ceo/breeds/frise-bichon/h-1.jpg
+perrito-18.jpg  <-  https://images.dog.ceo/breeds/frise-bichon/3.jpg
+perrito-19.jpg  <-  https://images.dog.ceo/breeds/frise-bichon/7.jpg
+perrito-20.jpg  <-  https://images.dog.ceo/breeds/maltese/n02085936_6348.jpg
+perrito-21.jpg  <-  https://images.dog.ceo/breeds/cockapoo/big-eye-ginger.jpg
+perrito-22.jpg  <-  https://images.dog.ceo/breeds/shihtzu/n02086240_4255.jpg
+perrito-23.jpg  <-  https://images.dog.ceo/breeds/dachshund/daschund-shorthair.jpg
+perrito-24.jpg  <-  https://images.dog.ceo/breeds/poodle-toy/n02113624_665.jpg
+perrito-25.jpg  <-  https://images.dog.ceo/breeds/chow/n02112137_16520.jpg
+perrito-26.jpg  <-  https://images.dog.ceo/breeds/chow/n02112137_13499.jpg

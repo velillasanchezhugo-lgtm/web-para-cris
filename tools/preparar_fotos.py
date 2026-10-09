@@ -24,6 +24,13 @@ SALIDA = RAIZ / "assets" / "fotos"
 FOTOS = {
     "abenia-ascensor":   ("Abenia/34a253e0-eebb-4330-9f9f-61d8b418b551.jpg", None),
     "abenia-bar":        ("Abenia/WhatsApp Image 2026-10-09 at 11.51.59 (7).jpeg", "historia"),
+    "abenia-videollamada":    ("Abenia/20220123_215802_d7ccdabb-ccce-4bfe-9e32-30f72818e058.jpg", (0, 150, 750, 1190)),
+    "abenia-ascensor-gafas":  ("Abenia/20220301_084852_0AEDEE5D-69E7-48E5-B8B2-7E643EC6947B.jpg", None),
+    "abenia-morritos":        ("Abenia/20220619_095003_20a23613-2813-46a3-9d25-0f381339e4a2.jpg", None),
+    "abenia-kfc":             ("Abenia/20220703_231849_ecf3d99b-2d35-4770-af33-4db216818a6e.jpg", None),
+    "abenia-chuches":         ("Abenia/20240906_004928_IMG_2909.JPG", None),
+    "abenia-ascensor-espejo": ("Abenia/20240913_182901_IMG_3061.jpg", None),
+    "abenia-terraza":         ("Abenia/20240918_122505_IMG_3162.jpg", None),
 
     "cris-siesta":       ("Cris/WhatsApp Image 2026-10-09 at 11.51.59 (1).jpeg", "historia"),
     "cris-espejo-pelo":  ("Cris/WhatsApp Image 2026-10-09 at 11.51.59 (2).jpeg", "historia"),

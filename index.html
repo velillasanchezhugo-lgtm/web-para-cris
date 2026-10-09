@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fdd7dd">
+  <meta name="robots" content="noindex">
+  <title>Para Cris · 19</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎁</text></svg>">
+  <link rel="preload" href="assets/fuentes/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <!-- Barra superior: volver, progreso y sonido -->
+  <header class="barra" id="barra" hidden>
+    <button class="btn-icono" id="btn-volver" type="button" aria-label="Volver">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+    </button>
+    <div class="progreso" id="progreso" aria-live="polite"></div>
+    <button class="btn-icono" id="btn-sonido" type="button" aria-pressed="false" aria-label="Activar sonido">
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="ico-off"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 9l4 6M21 9l-4 6"/></svg>
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="ico-on"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 8.5a5 5 0 0 1 0 7M19.5 6a8.5 8.5 0 0 1 0 12"/></svg>
+    </button>
+  </header>
+
+  <main id="app">
+    <!-- Cada pantalla es una <section>; app.js muestra solo una -->
+    <section class="pantalla pantalla-entrada" id="p-entrada" aria-labelledby="entrada-titulo"></section>
+    <section class="pantalla" id="p-equipo" aria-labelledby="equipo-titulo" hidden></section>
+    <section class="pantalla pantalla-juego" id="p-juego" hidden></section>
+    <section class="pantalla" id="p-recuerdos" hidden></section>
+    <section class="pantalla" id="p-perritos" hidden></section>
+    <section class="pantalla pantalla-final" id="p-final" hidden></section>
+  </main>
+
+  <!-- Capa de celebración (confeti y pegatinas) -->
+  <div class="celebracion" id="celebracion" aria-hidden="true"></div>
+
+  <!-- Visor de fotos ampliadas -->
+  <dialog class="visor" id="visor" aria-label="Foto ampliada">
+    <img id="visor-img" alt="">
+    <p class="visor-pie" id="visor-pie"></p>
+    <div class="visor-botones">
+      <button class="btn-icono claro" type="button" id="visor-ant" aria-label="Foto anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button class="btn btn-claro" type="button" id="visor-cerrar">Cerrar</button>
+      <button class="btn-icono claro" type="button" id="visor-sig" aria-label="Foto siguiente"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+    </div>
+  </dialog>
+
+  <!-- Confirmación para reiniciar -->
+  <dialog class="aviso" id="aviso">
+    <p id="aviso-texto"></p>
+    <div class="fila-botones">
+      <button class="btn btn-secundario" type="button" id="aviso-no">Mejor no</button>
+      <button class="btn" type="button" id="aviso-si">Sí, reiniciar</button>
+    </div>
+  </dialog>
+
+  <noscript><p class="noscript">Esta web necesita JavaScript para funcionar. 💖</p></noscript>
+
+  <script src="js/contenido.js"></script>
+  <script src="js/juegos.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

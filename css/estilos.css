@@ -250,9 +250,15 @@ p { margin: 0; text-wrap: pretty; }
 }
 .candado svg { width: 38px; height: 38px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .personaje.disponible .marco img { filter: saturate(.75); }
+/* foto tapada hasta ver los recuerdos */
+.marco.tapada { background: var(--ciruela); }
+.marco.tapada img { filter: grayscale(1) blur(6px) brightness(.7); }
 .sello {
-  position: absolute; top: -10px; right: -8px; width: 52px; height: 52px; pointer-events: none;
+  position: absolute; top: -10px; right: -8px; width: 40px; height: 40px; pointer-events: none;
+  display: grid; place-items: center; border-radius: 50%;
+  background: #fff; color: var(--baya); box-shadow: 0 2px 0 var(--chicle);
 }
+.sello svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
 
 .final-cta {
   display: grid; gap: 10px; text-align: center; padding: 24px 20px; margin-top: 18px;

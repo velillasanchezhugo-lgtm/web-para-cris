@@ -13,9 +13,12 @@
 
   /* ---------------- Progreso (localStorage) ----------------
      Solo guarda QUÉ está desbloqueado y la preferencia de sonido.
-     Las partidas no guardan nada: repetir un juego nunca bloquea. */
+     Las partidas no guardan nada: repetir un juego nunca bloquea.
+     Los recuerdos vistos NO se guardan: al recargar, las fotos
+     del equipo vuelven a salir tapadas. */
   const progreso = (function () {
     let datos = { desbloqueados: {}, sonido: false };
+    const vistos = new Set();
     try {
       const guardado = JSON.parse(localStorage.getItem(CLAVE) || "null");
       if (guardado && typeof guardado === "object") datos = { ...datos, ...guardado };
@@ -24,11 +27,13 @@
     return {
       tiene: (id) => !!datos.desbloqueados[id],
       desbloquear(id) { if (!datos.desbloqueados[id]) { datos.desbloqueados[id] = Date.now(); guardar(); return true; } return false; },
+      visto: (id) => vistos.has(id),
+      marcarVisto(id) { vistos.add(id); },
       cuantos: () => ORDEN.filter((id) => datos.desbloqueados[id]).length,
       todos: () => ORDEN.every((id) => datos.desbloqueados[id]),
       sonido: () => !!datos.sonido,
       ponerSonido(v) { datos.sonido = v; guardar(); },
-      reiniciar() { datos = { desbloqueados: {}, sonido: datos.sonido }; try { localStorage.removeItem(CLAVE); } catch (e) {} guardar(); },
+      reiniciar() { datos = { desbloqueados: {}, sonido: datos.sonido }; vistos.clear(); try { localStorage.removeItem(CLAVE); } catch (e) {} guardar(); },
     };
   })();
 
@@ -230,6 +235,7 @@
 
   /* ---------------- Equipo ---------------- */
   const CANDADO = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>';
+  const CANDADO_ABIERTO = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.9-1"/></svg>';
 
   function pintarEquipo() {
     const q = C.equipo;
@@ -245,12 +251,13 @@
           ? `<a class="btn" href="#juego/${id}">Jugar</a>`
           : "";
       const pista = !hecho && !libre ? `<p class="reto">Se abre cuando desbloquees a Velilla y a Abenia.</p>` : `<p class="reto">${esc(p.juego.titulo)}</p>`;
+      // la foto sigue tapada hasta que se ven sus recuerdos
+      const tapada = !(hecho && progreso.visto(id));
       return `
         <article class="personaje ${estado}" aria-label="${esc(p.nombre)}: ${etiqueta}">
-          <div class="marco ${id === "abenia" ? "suave" : ""}">
-            <img src="${mini(p.foto)}" alt="${hecho || libre ? "Foto de " + esc(p.nombre) + (id === "cris" ? "" : " con Cris") : ""}" style="object-position:${p.pos || "50% 40%"}" loading="lazy" decoding="async">
-            ${estado === "pendiente" ? `<span class="candado">${CANDADO}</span>` : ""}
-            ${hecho ? `<img class="sello" src="${sticker(C.stickers.capitulo[id][0])}" alt="" width="128" height="128" loading="lazy">` : ""}
+          <div class="marco ${id === "abenia" ? "suave" : ""} ${tapada ? "tapada" : ""}">
+            <img src="${mini(p.foto)}" alt="${tapada ? "" : "Foto de " + esc(p.nombre) + (id === "cris" ? "" : " con Cris")}" style="object-position:${p.pos || "50% 40%"}" loading="lazy" decoding="async">
+            ${tapada ? `<span class="candado">${hecho ? CANDADO_ABIERTO : CANDADO}</span>` : `<span class="sello">${CANDADO_ABIERTO}</span>`}
           </div>
           <div class="personaje-info">
             <h2>${esc(p.nombre)}</h2>
@@ -360,7 +367,7 @@
     $("#p-juego").innerHTML = `
       <div class="victoria">
         <div class="stickers-fila" aria-hidden="true">${stickersHTML(C.stickers.victoria.slice(0, 4))}</div>
-        <div class="marco ${id === "abenia" ? "suave" : ""}"><img src="${mini(p.foto)}" alt="" style="object-position:${p.pos || "50% 40%"}"></div>
+        <div class="marco ${id === "abenia" ? "suave" : ""} ${progreso.visto(id) ? "" : "tapada"}"><img src="${mini(p.foto)}" alt="" style="object-position:${p.pos || "50% 40%"}">${progreso.visto(id) ? "" : `<span class="candado">${CANDADO_ABIERTO}</span>`}</div>
         <h1>${nuevo ? "¡Desbloqueado!" : "¡Otra vez!"}</h1>
         <p class="mensaje-victoria">${esc(p.juego.victoria)}</p>
         <div class="columna-botones">
@@ -377,6 +384,7 @@
   /* ---------------- Recuerdos ---------------- */
   function pintarRecuerdos(id) {
     const p = C.personajes[id], cap = p.capitulo;
+    progreso.marcarVisto(id);
     const fotosCap = [];
     const registrar = (nombre, pie) => { fotosCap.push({ src: foto(nombre), pie, alt: pie || "Foto de " + p.nombre }); return fotosCap.length - 1; };
 
